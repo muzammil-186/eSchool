@@ -13,53 +13,51 @@ import com.edu.vu.model.User;
 public class RegisteredStudentDao {
 	/** 
 	 * getRegisteredStudent
-	 * This method gets registered student from the database
+	 * This method gets registered student from the database and
+	 * fills the model for registered students
 	 * @param user
 	 * @return RegisteredStudent object
 	 * @throws ClassNotFoundException
 	 */
-	public int getRegisteredStudent(User user)throws ClassNotFoundException{
+	public RegisteredStudent getRegisteredStudent(String userId)throws ClassNotFoundException{
 		int result =0;
-		String GET_USER_SQL = "Select * from user where STUDENTID = ?";
+		String GET_USER_SQL = "Select * from user where STUDENTID = " + userId;   
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		ResultSet rs =null;
-		RegisteredStudent registeredstudent = new RegisteredStudent();
+		Connection connection = null;
+		RegisteredStudent registeredStudent = new RegisteredStudent();
 		try {
-			Connection connection = 
+			 connection = 
 					DriverManager.getConnection("jdbc:mysql://localhost:3306/eschool?useSSL=false", "root", "abc123");
 		
-			PreparedStatement preparedStatement = connection.prepareStatement(GET_USER_SQL);
-			preparedStatement.setString(1, user.getId());
-			rs = preparedStatement.executeQuery();
+						
+			Statement statement = connection.createStatement();
+			rs = statement.executeQuery(GET_USER_SQL);
 						
 			if(rs.next()) {
 				
-				registeredstudent.setStudentId(rs.getString("REGSTUDENT"));
-				registeredstudent.setFirstName(rs.getString("FIRST_NAME"));
-				registeredstudent.setLastName(rs.getString("LAST_NAME"));
-				registeredstudent.setDob(rs.getString("DOB"));
-				registeredstudent.setStatus(rs.getString("STATUS"));
+				registeredStudent.setStudentId(rs.getString("STUDENTID"));
+				registeredStudent.setFirstName(rs.getString("FIRST_NAME"));
+				registeredStudent.setLastName(rs.getString("LAST_NAME"));
+				registeredStudent.setDob(rs.getString("DOB"));
+				registeredStudent.setGrade(rs.getInt("GRADE"));
+				registeredStudent.setParentId(rs.getString("PARENTID"));
+				registeredStudent.setStatus(rs.getString("STATUS"));
 				
 			}
 			rs.close();
 
-			System.out.println("Executing query:" + preparedStatement);
-			result = preparedStatement.executeUpdate();
-			
+						
 		}catch(Exception moae) {
-			try{
-			rs.close();
-			}catch(Exception mo) {}
+			
 			System.out.println("Encountered Exception:" + moae.getClass().getName()+ " With message:"+ moae.getMessage());
+		}finally {
+			try{
+				connection.close();
+			}catch(Exception mo) {}	
 		}
-		return result;
+		return registeredStudent;
 	}
 
-}
 
-		
-		
-		
-		
-		
-		
+}

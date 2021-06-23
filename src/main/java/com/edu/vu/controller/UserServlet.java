@@ -9,8 +9,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.edu.vu.dao.EmployeeDao;
+import com.edu.vu.dao.ParentDao;
 import com.edu.vu.dao.RegisteredStudentDao;
 import com.edu.vu.dao.UserDao;
+import com.edu.vu.model.Employee;
+import com.edu.vu.model.Parent;
 import com.edu.vu.model.RegisteredStudent;
 import com.edu.vu.model.User;
 
@@ -25,6 +29,8 @@ public class UserServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private UserDao userDao = new UserDao();
 	private RegisteredStudentDao studentDao = new RegisteredStudentDao();
+	private ParentDao parentDao = new ParentDao();
+	private EmployeeDao employeeDao = new EmployeeDao();
 	//add parent and employee Dao
 	
 	
@@ -102,6 +108,52 @@ public class UserServlet extends HttpServlet {
 		try {
 			 RegisteredStudent regStudent = studentDao.getRegisteredStudent(userId);
 			 if(regStudent == null) {
+				 result = false;
+			 }else {
+				 result = true;
+				 
+			 }
+				 
+		}catch(Exception ignore) {}
+		
+		
+		return result;
+	}
+	
+	/**
+	 * isValidParent
+	 * checks if the user exists in the database	
+	 * @param userId
+	 * @return true if user exists false otherwise
+	 */
+	private boolean isValidParent(String userId) {
+		boolean result = false;// result of method
+		try {
+			 Parent parent = parentDao.getParent(userId);
+			 if(parent == null) {
+				 result = false;
+			 }else {
+				 result = true;
+				 
+			 }
+				 
+		}catch(Exception ignore) {}
+		
+		
+		return result;
+	}
+
+	/**
+	 * isValidEmployee
+	 * checks if the user exists in the database	
+	 * @param userId
+	 * @return true if user exists false otherwise
+	 */
+	private boolean isValidEmployee(String userId) {
+		boolean result = false;// result of method
+		try {
+			 Employee employee = employeeDao.getEmployee(userId);
+			 if(employee == null) {
 				 result = false;
 			 }else {
 				 result = true;
