@@ -66,25 +66,29 @@ public class UserServlet extends HttpServlet {
 		aUser.setId(variableId);
 		//To do add verification
 		boolean result = false;
+		
+		
+		String firstName = request.getParameter("firstName");
+		String lastName = request.getParameter("lastName");
+		String userName = request.getParameter("userName");
+		String password = request.getParameter("password");
+	
+		aUser.setFirstName(firstName);
+		aUser.setLastName(lastName);
+		aUser.setPassword(password);
+		aUser.setUserName(userName);
+		aUser.setDob(request.getParameter("dob"));
+		aUser.setVersion(0);
+		aUser.setStatus(0);
 		if (variableRole.equalsIgnoreCase("student")) {
-			result = isValidStudent(variableId);
-		}//else if(variableRole.equalsIgnoreCase("parent")) {
-		//}
-		//End of verification
+				result = isValidStudent(aUser);
+        }else if(variableRole.equalsIgnoreCase("parent")) {
+        	    result = isValidParent(aUser);	       
+        }else if(variableRole.equalsIgnoreCase("employee")) {
+        	    result = isValidEmployee(aUser);      
+        }
+			//End of verification
 		if (result == true) {
-			String firstName = request.getParameter("firstName");
-			String lastName = request.getParameter("lastName");
-			String userName = request.getParameter("userName");
-			String password = request.getParameter("password");
-		
-			aUser.setFirstName(firstName);
-			aUser.setLastName(lastName);
-			aUser.setPassword(password);
-			aUser.setUserName(userName);
-			aUser.setDob(request.getParameter("dob"));
-		
-			aUser.setVersion(0);
-			aUser.setStatus(0);
 			try {
 				userDao.registerUser(aUser);
 			}catch(Exception moae) {
@@ -103,10 +107,10 @@ public class UserServlet extends HttpServlet {
 	 * @param userId
 	 * @return true if user exists false otherwise
 	 */
-	private boolean isValidStudent(String userId) {
+	private boolean isValidStudent(User user) {
 		boolean result = false;// result of method
 		try {
-			 RegisteredStudent regStudent = studentDao.getRegisteredStudent(userId);
+			 RegisteredStudent regStudent = studentDao.getRegisteredStudent(user.getId());
 			 if(regStudent == null) {
 				 result = false;
 			 }else {
@@ -126,18 +130,18 @@ public class UserServlet extends HttpServlet {
 	 * @param userId
 	 * @return true if user exists false otherwise
 	 */
-	private boolean isValidParent(String userId) {
+	private boolean isValidParent(User user) {
 		boolean result = false;// result of method
 		try {
-			 Parent parent = parentDao.getParent(userId);
+			 Parent parent = parentDao.getParent(user.getId());
 			 if(parent == null) {
 				 result = false;
 			 }else {
 				 result = true;
 				 
-			 }
+			   }
 				 
-		}catch(Exception ignore) {}
+	       	}catch(Exception ignore) {}
 		
 		
 		return result;
@@ -149,10 +153,10 @@ public class UserServlet extends HttpServlet {
 	 * @param userId
 	 * @return true if user exists false otherwise
 	 */
-	private boolean isValidEmployee(String userId) {
+	private boolean isValidEmployee(User user) {
 		boolean result = false;// result of method
 		try {
-			 Employee employee = employeeDao.getEmployee(userId);
+			 Employee employee = employeeDao.getEmployee(user.getId());
 			 if(employee == null) {
 				 result = false;
 			 }else {

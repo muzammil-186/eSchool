@@ -53,6 +53,21 @@ public class Employee {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	
-	
+	/**
+	 * equals 
+	 * return checks if the two objects are equal
+	 * @param employee
+	 * @return true if equal otherwise false
+	 */ 
+	public boolean equals(Employee employee) {
+		 return (this.designation.equalsIgnoreCase(employee.getDesignation())&&
+				 this.dob.equalsIgnoreCase(employee.getDob())&&
+				 this.firstName.equalsIgnoreCase(employee.getFirstName())&&
+				 this.lastName.equalsIgnoreCase(employee.getLastName())&&
+				 this.status.equalsIgnoreCase(employee.getStatus()));
+				 
+				 
+				 
+				 
+	}
 }
