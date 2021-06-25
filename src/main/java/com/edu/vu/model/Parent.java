@@ -42,5 +42,17 @@ public class Parent {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	/**
+	 * equals 
+	 * return checks if the two objects are equal
+	 * @param employee
+	 * @return true if equal otherwise false
+	 */ 
+	public boolean isUserSame(User user) {
+		 return (
+				 this.dob.equalsIgnoreCase(user.getDob())&&
+				 this.firstName.equalsIgnoreCase(user.getFirstName())&&
+				 this.lastName.equalsIgnoreCase(user.getLastName()));
+	}
 	
 }

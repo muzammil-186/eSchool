@@ -81,6 +81,7 @@ public class UserServlet extends HttpServlet {
 		aUser.setVersion(0);
 		aUser.setStatus(0);
 		if (variableRole.equalsIgnoreCase("student")) {
+			System.out.println("processing student");
 				result = isValidStudent(aUser);
         }else if(variableRole.equalsIgnoreCase("parent")) {
         	    result = isValidParent(aUser);	       
@@ -114,8 +115,8 @@ public class UserServlet extends HttpServlet {
 			 if(regStudent == null) {
 				 result = false;
 			 }else {
-				 result = true;
-				 
+				 result = regStudent.isUserSame(user);
+				 				 
 			 }
 				 
 		}catch(Exception ignore) {}
@@ -137,7 +138,7 @@ public class UserServlet extends HttpServlet {
 			 if(parent == null) {
 				 result = false;
 			 }else {
-				 result = true;
+				 result = parent.isUserSame(user);
 				 
 			   }
 				 
@@ -160,7 +161,7 @@ public class UserServlet extends HttpServlet {
 			 if(employee == null) {
 				 result = false;
 			 }else {
-				 result = true;
+				 result = employee.isUserSame(user);
 				 
 			 }
 				 

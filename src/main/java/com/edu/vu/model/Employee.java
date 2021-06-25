@@ -59,15 +59,10 @@ public class Employee {
 	 * @param employee
 	 * @return true if equal otherwise false
 	 */ 
-	public boolean equals(Employee employee) {
-		 return (this.designation.equalsIgnoreCase(employee.getDesignation())&&
-				 this.dob.equalsIgnoreCase(employee.getDob())&&
-				 this.firstName.equalsIgnoreCase(employee.getFirstName())&&
-				 this.lastName.equalsIgnoreCase(employee.getLastName())&&
-				 this.status.equalsIgnoreCase(employee.getStatus()));
-				 
-				 
-				 
-				 
+	public boolean isUserSame(User user) {
+		 return (
+				 this.dob.equalsIgnoreCase(user.getDob())&&
+				 this.firstName.equalsIgnoreCase(user.getFirstName())&&
+				 this.lastName.equalsIgnoreCase(user.getLastName()));
 	}
 }

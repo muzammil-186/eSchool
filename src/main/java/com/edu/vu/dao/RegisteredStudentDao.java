@@ -21,7 +21,7 @@ public class RegisteredStudentDao {
 	 */
 	public RegisteredStudent getRegisteredStudent(String userId)throws ClassNotFoundException{
 		int result =0;
-		String GET_USER_SQL = "Select * from user where STUDENTID = " + userId;   
+		String GET_USER_SQL = "Select * from REGSTUDENT where STUDENTID = " + userId;   
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		ResultSet rs =null;
 		Connection connection = null;

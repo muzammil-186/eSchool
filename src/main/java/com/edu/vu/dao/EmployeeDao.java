@@ -20,7 +20,7 @@ public class EmployeeDao {
 	public Employee getEmployee(String userId)throws ClassNotFoundException{
 		int result =0;
 		Connection connection = null;
-		String GET_USER_SQL = "Select * from faculty where EMPLOYEEID = " + userId;
+		String GET_USER_SQL = "Select * from EMPLOYEE where EMPLOYEEID = " + userId;
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		ResultSet rs =null;
 		Employee employee = new Employee();
