@@ -19,10 +19,16 @@ import com.edu.vu.model.RegisteredStudent;
 import com.edu.vu.model.User;
 
 
-
-
 /**
  * Servlet implementation class UserServlet
+ * This Servlet provides controller functionality in the MVC pattern
+ * It handles user registration.
+ * 
+ * @author Muzammil Ahmed
+ * Virtual University ID MC180404448
+ * @version 1.0 
+ * Copyright (C) 2021 Muzammil Ahmed. All Rights Reserved.
+ * 
  */
 @WebServlet("/UserServlet")
 public class UserServlet extends HttpServlet {
