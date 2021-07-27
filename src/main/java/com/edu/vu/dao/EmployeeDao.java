@@ -16,6 +16,12 @@ public class EmployeeDao {
 	 * @param user
 	 * @return Employee object
 	 * @throws ClassNotFoundException
+	 * 
+	 * @author Muzammil Ahmed
+     * Project Advisor Humaira Naeem    (humairanaeem@vu.edu.pk)
+     * Virtual University ID MC180404448
+     * @version 1.0 
+     * Copyright (C) 2021 Muzammil Ahmed. All Rights Reserved.
 	 */
 	public Employee getEmployee(String userId)throws ClassNotFoundException{
 		int result =0;

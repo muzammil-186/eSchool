@@ -20,10 +20,11 @@ public class RegisteredStudentDao {
 	 * @throws ClassNotFoundException
 	 * 
 	 * @author Muzammil Ahmed
+     * Project Advisor Humaira Naeem    (humairanaeem@vu.edu.pk)
      * Virtual University ID MC180404448
      * @version 1.0 
      * Copyright (C) 2021 Muzammil Ahmed. All Rights Reserved.
-   	 */
+	 */
 	public RegisteredStudent getRegisteredStudent(String userId)throws ClassNotFoundException{
 		int result =0;
 		String GET_USER_SQL = "Select * from REGSTUDENT where STUDENTID = " + userId;   

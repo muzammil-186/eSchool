@@ -25,6 +25,7 @@ import com.edu.vu.model.User;
  * It handles user registration.
  * 
  * @author Muzammil Ahmed
+ * Project Advisor Humaira Naeem    (humairanaeem@vu.edu.pk)
  * Virtual University ID MC180404448
  * @version 1.0 
  * Copyright (C) 2021 Muzammil Ahmed. All Rights Reserved.
@@ -113,6 +114,12 @@ public class UserServlet extends HttpServlet {
 	 * checks if the user exists in the database	
 	 * @param userId
 	 * @return true if user exists false otherwise
+	 * 
+	 * @author Muzammil Ahmed
+     * Project Advisor Humaira Naeem    (humairanaeem@vu.edu.pk)
+     * Virtual University ID MC180404448
+     * @version 1.0 
+     * Copyright (C) 2021 Muzammil Ahmed. All Rights Reserved.
 	 */
 	private boolean isValidStudent(User user) {
 		boolean result = false;// result of method
@@ -136,6 +143,12 @@ public class UserServlet extends HttpServlet {
 	 * checks if the user exists in the database	
 	 * @param userId
 	 * @return true if user exists false otherwise
+	 * 
+	 * @author Muzammil Ahmed
+     * Project Advisor Humaira Naeem    (humairanaeem@vu.edu.pk)
+     * Virtual University ID MC180404448
+     * @version 1.0 
+     * Copyright (C) 2021 Muzammil Ahmed. All Rights Reserved.
 	 */
 	private boolean isValidParent(User user) {
 		boolean result = false;// result of method
@@ -159,6 +172,12 @@ public class UserServlet extends HttpServlet {
 	 * checks if the user exists in the database	
 	 * @param userId
 	 * @return true if user exists false otherwise
+	 * 
+	 * @author Muzammil Ahmed
+     * Project Advisor Humaira Naeem    (humairanaeem@vu.edu.pk)
+     * Virtual University ID MC180404448
+     * @version 1.0 
+     * Copyright (C) 2021 Muzammil Ahmed. All Rights Reserved.
 	 */
 	private boolean isValidEmployee(User user) {
 		boolean result = false;// result of method

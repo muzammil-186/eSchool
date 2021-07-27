@@ -9,6 +9,12 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * Servlet implementation class UserServlet
+ * 
+ * @author Muzammil Ahmed
+ * Project Advisor Humaira Naeem    (humairanaeem@vu.edu.pk)
+ * Virtual University ID MC180404448
+ * @version 1.0 
+ * Copyright (C) 2021 Muzammil Ahmed. All Rights Reserved.
  */
 @WebServlet("/")
 public class HomeServlet extends HttpServlet {
