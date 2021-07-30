@@ -3,6 +3,7 @@ package com.edu.vu.dao;
 import java.sql.Connection; 
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import com.edu.vu.model.User;
 
@@ -37,6 +38,36 @@ public class UserDao {
 			System.out.println("Encountered Exception:" + moae.getClass().getName()+ " With message:"+ moae.getMessage());
 		}
 		return result;
+	}
+	/**
+	 * getUser 
+	 * @param username
+	 * @param password
+	 * @return
+	 * @throws Exception
+	 */
+	public User getUser(String username, String password)throws Exception {
+		User currentUser = null;
+		Connection connection = 
+				DriverManager.getConnection("jdbc:mysql://localhost:3306/eschool?useSSL=false", "root", "abc123");
+		PreparedStatement stmt = connection.prepareStatement("SELECT * FROM user WHERE username=? AND password=?");
+		stmt.setString(1, username);
+		stmt.setString(2, password);
+		ResultSet rs = stmt.executeQuery();
+	    if(rs.next())	{
+	    	currentUser = new User();
+			currentUser.setId(rs.getString("ID"));
+			currentUser.setUserName(rs.getString("USERNAME"));
+			currentUser.setPassword(rs.getString("PASSWORD"));
+			currentUser.setFirstName(rs.getString("FIRST_NAME"));
+			currentUser.setLastName(rs.getString("LAST_NAME"));
+			currentUser.setDob(rs.getString("DOB"));
+			currentUser.setRole(rs.getString("ROLE"));
+
+	    }
+	    connection.close();
+	    return currentUser; 	
+		
 	}
 
 }

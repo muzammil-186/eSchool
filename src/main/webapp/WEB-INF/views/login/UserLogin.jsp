@@ -45,6 +45,9 @@
 		}
 		
 		#footer {
+		    position: relative;
+		    margin-top: -180;
+		    height: 80px;
 			clear: both;
 		}
 		
@@ -136,7 +139,7 @@
         #image-text{
             position: absolute;
             top: 20%;
-            left: 55%;
+            left: 50%;
             font-family: 'Roboto';
             color: #000;
             transform: translate(-30%, -30%);
@@ -157,10 +160,35 @@
 		</h2>
 	</div>
 </header>
+    <spacer type="horizontal" width="100" height="100">.</spacer>
 
-<div align="center">
-<h1>Welcome to Login</h1>
+	<div id="container">
+		<h1>eSchool Login</h1>
+		<spacer type="horizontal" width="100" height="100"></spacer>
+		<form action="<%= request.getContextPath()%>/LoginServlet" method="post">
+		    <spacer type="horizontal" width="100" height="200">.</spacer>
+		    
+			<table style="width: 80%">
+				<tr>
+    				<td>User Name</td>
+    				<td><input type="text" name="userName"/></td>
+				</tr>
+				<tr>
+    				<td>Password</td>
+    				<td><input type="password" name="password"/></td>
+				</tr>
+		
+	   		</table>
+	   		
+			<input type="submit" value="Submit">
+       </form>
 
-</div>
+	</div>
+    
+	<div id="footer-wrapper">
+		<footer id="footer"><p style="font-style: italic;font-size:11px;">Equal Opportunity Institution:eSchool is an affirmative action/equal opportunity employer.</p></footer>
+	</div>
+
 </body>
+
 </html>
