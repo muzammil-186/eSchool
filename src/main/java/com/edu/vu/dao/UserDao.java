@@ -48,6 +48,7 @@ public class UserDao {
 	 */
 	public User getUser(String username, String password)throws Exception {
 		User currentUser = null;
+		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection connection = 
 				DriverManager.getConnection("jdbc:mysql://localhost:3306/eschool?useSSL=false", "root", "abc123");
 		PreparedStatement stmt = connection.prepareStatement("SELECT * FROM user WHERE username=? AND password=?");

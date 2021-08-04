@@ -46,12 +46,29 @@ public class LoginServlet extends HttpServlet {
 		User user = null;
 		String userName = request.getParameter("userName");
 		String password = request.getParameter("password");
+		RequestDispatcher dispatcher = null;
 		try {
 			user =  userDao.getUser(userName, password);
 		
-			RequestDispatcher dispatcher = 
-			request.getRequestDispatcher("/WEB-INF/views/userError.jsp");
+			if(user != null ) {
+				String userRole = user.getRole();
+				
+				if(userRole.equalsIgnoreCase("Student")) {
+					dispatcher = request.getRequestDispatcher("/WEB-INF/views/login/StudentPage.jsp");					
+				}else if(userRole.equalsIgnoreCase("Parent")) {
+				    dispatcher = request.getRequestDispatcher("/WEB-INF/views/login/ParentPage.jsp");					
+				}else if(userRole.equalsIgnoreCase("Faculty")) {
+					dispatcher = request.getRequestDispatcher("/WEB-INF/views/login/FacultyPage.jsp");					
+				}else if(userRole.equalsIgnoreCase("Employee")) {
+					dispatcher = request.getRequestDispatcher("/WEB-INF/views/login/AdminPage.jsp");					
+				}else {
+					dispatcher = request.getRequestDispatcher("/WEB-INF/views/RoleNotFound.jsp");					
+				}
+			}else {
+				dispatcher = request.getRequestDispatcher("/WEB-INF/views/UserNotFound.jsp");				
+			}
 			dispatcher.forward(request, response);
+
 			
 		} catch(Exception ignore4now) {}
 	}

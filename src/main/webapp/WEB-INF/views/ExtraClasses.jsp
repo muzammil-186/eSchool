@@ -6,8 +6,7 @@
 <meta charset="ISO-8859-1">
 <title>Welcome to e-School Learning at VU</title>
 <style type="text/css">
-
-		/* Layout */
+/* Layout */
 		body {
 			min-width: 630px;
 		}
@@ -37,8 +36,18 @@
 			right: 240px;
 			margin-left: -100%;
 		}
-		
-		#right {
+		#myLeft2 {
+			
+			background-color: #DCDCDC;
+			
+		}
+		#myLeft {
+			
+			curser: pointer;
+			font-size: 16px;
+			margin-left: -73%;
+		}
+#right {
 			width: 130px;
 			padding: 0 10px;
 			margin-right: -100%;
@@ -76,7 +85,6 @@
 			margin-bottom: -10000px;
 			background: #fff;
 		}
-
 		/* Aesthetics */
 		body {
 			margin: 0;
@@ -95,25 +103,6 @@
 			padding: 0;
 		}
 		
-		nav ul a {
-			color: darkgreen;
-			text-decoration: none;
-		}
-
-		#header, #footer {
-			font-size: large;
-			padding: 0.3em;
-			background: #BCCE98;
-		}
-
-		#left {
-			background: #DAE9BC;
-		}
-		
-		#right {
-			background: #F7FDEB;
-		}
-
 		#center {
 			background: #fff;
 		}
@@ -136,7 +125,7 @@
         #image-text{
             position: absolute;
             top: 20%;
-            left: 50%;
+            left: 55%;
             font-family: 'Roboto';
             color: #000;
             transform: translate(-30%, -30%);
@@ -145,7 +134,7 @@
 	</style>
 </head>
 <body>
-<header id="header">
+		<header id="header">
 		
 	
 	<!-- Image menu in Header to contain an Image and
@@ -157,51 +146,47 @@
 		</h2>
 	</div>
 </header>
+<div  align="center">
+<h1>Register For Enrichment Course</h1>
+<form action="<%= request.getContextPath()%>/EnrhServlet" method="post">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-
-	<div id="container">
-
-		<main id="center" class="column">
-			<article>
-			
-				<h1>Welcome to eSchool Home</h1>
-				<p>In one learning platform, watch your math or chemistry lectures.</p><p>eSchool is a digital platform offering students, parents and educators a virtual approach of learning !!!</p>Welcome and Enjoy Learning.</p><h3>Our Guiding Priciples</h3><p>The most important moment of your life is now. The most important person in your life is the one you are with now, and the most important activity in your life is the one you are involved with right now."</p>
-			
-			</article>								
-		</main>
-
-		<nav id="left" class="column">
-			<h3>Academics</h3>
-			<ul>
-				<li><a href="ExtraClassServlet">Register for Enrichment Classes</a></li>
-				<li><a href="#">Tuition and Fee</a></li>
-				<li><a href="#">Records</a></li>
-				<li><a href="#">Faculty & Staff Directory</a></li>
-				<li><a href="#">About eSchool</a></li>
-			</ul>
-			<h3>Resources</h3>
-			<ul>
-				<li><a href="#">Academic Calendar</a></li>
-				<li><a href="#">Student Handbook</a></li>
-				<li><a href="#">Catalog</a></li>
-			</ul>
-
-		</nav>
-
-		<div id="right" class="column">
-		    <h3>Login</h3>
-			<ul>
-				<li><a href="LoginServlet">Login</a></li>				
-				<li><a href="UserServlet">Register</a></li>
-			</ul>
-		</div>
-
+<table id="myLeft2" border="1" style="width: 80%">
+    <tr>
+   		<th>Course Number</th>
+   		<th>Title</th>
+   		<th>Level</th>
+   		<th>Start Date</th>
+   		<th>End Date</th>
+   		<th>Course Prerequisites</th>
+   		<th>Number of seats</th>
+   		<th>Seats Taken</th>
+   		<th>Seats Remaining</th>
+   		<th>Tuition</th>
+   	</tr>
+   	<c:forEach items="${requestScope.courses}" var="course">
+	    <tr>
+		    <td><c:out value="${course.courseId}"></c:out></td>
+		    <td><c:out value="${course.courseTitle}"></c:out></td>
+		    <td><c:out value="${course.courseLevel}"></c:out></td>
+		    <td><c:out value="${course.startDate}"></c:out></td>
+		    <td><c:out value="${course.endDate}"></c:out></td>
+		    <td><c:out value="${course.coursePrequisite}"></c:out></td>
+		    <td><c:out value="${course.enrollmentLimit}"></c:out></td>
+		    <td><c:out value="${course.currentEnrollement}"></c:out></td>
+		    <td><c:out value="${course.openSeats}"></c:out></td>
+		    <td><c:out value="${course.tuition}"></c:out></td>
+	    </tr>
+   
+   </c:forEach>
+</table>
+   	
+		<spacer type="horizontal" width="100" height="100"><></spacer>
+    <div id ="myLeft" >
+		<input  type="submit" value="Register">
 	</div>
-
-	<div id="footer-wrapper">
-		<footer id="footer"><p style="font-style: italic;font-size:11px;">Equal Opportunity Institution:eSchool is an affirmative action/equal opportunity employer.</p></footer>
-	</div>
-
+	</form>
+</div>
 </body>
-
 </html>
+		
