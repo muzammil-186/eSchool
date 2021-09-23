@@ -6,8 +6,7 @@
 <meta charset="ISO-8859-1">
 <title>Welcome to e-School Learning at VU</title>
 <style type="text/css">
-
-		/* Layout */
+/* Layout */
 		body {
 			min-width: 630px;
 		}
@@ -37,17 +36,24 @@
 			right: 240px;
 			margin-left: -100%;
 		}
-		
-		#right {
+		#myLeft2 {
+			
+			background-color: #DCDCDC;
+			
+		}
+		#myLeft {
+			
+			curser: pointer;
+			font-size: 16px;
+			margin-left: -73%;
+		}
+#right {
 			width: 130px;
 			padding: 0 10px;
 			margin-right: -100%;
 		}
 		
 		#footer {
-		    position: relative;
-		    margin-top: -180;
-		    height: 80px;
 			clear: both;
 		}
 		
@@ -79,7 +85,6 @@
 			margin-bottom: -10000px;
 			background: #fff;
 		}
-
 		/* Aesthetics */
 		body {
 			margin: 0;
@@ -98,25 +103,6 @@
 			padding: 0;
 		}
 		
-		nav ul a {
-			color: darkgreen;
-			text-decoration: none;
-		}
-
-		#header, #footer {
-			font-size: large;
-			padding: 0.3em;
-			background: #BCCE98;
-		}
-
-		#left {
-			background: #DAE9BC;
-		}
-		
-		#right {
-			background: #F7FDEB;
-		}
-
 		#center {
 			background: #fff;
 		}
@@ -139,7 +125,7 @@
         #image-text{
             position: absolute;
             top: 20%;
-            left: 50%;
+            left: 55%;
             font-family: 'Roboto';
             color: #000;
             transform: translate(-30%, -30%);
@@ -148,10 +134,10 @@
 	</style>
 </head>
 <body>
-<header id="header">
+	<header id="header">
 		
 	
-	<!-- Image menu in Header to contain an Image and
+<!-- Image menu in Header to contain an Image and
 		a sample text over that image -->
 	<div id="header-image-menu">
 		<img src="https://www.vu.edu.pk/images/home/Sliders/banner3.jpg">
@@ -160,25 +146,23 @@
 		</h2>
 	</div>
 </header>
-    <spacer type="horizontal" width="100" height="100">.</spacer>
+<div  align="center">
+	<h1>  eSchool Academic Calender  </h1>
+<form action="<%= request.getContextPath()%>/EnrhServlet" method="post">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-	<div id="container">
-		<h1>About eSchool </h1>
-		<spacer type="horizontal" width="100" height="100"></spacer>
-		<form action="<%= request.getContextPath()%>/LoginServlet" method="post">
-		    <spacer type="horizontal" width="100" height="200">.</spacer>
-		    
-		<p>
-		 This is my final year project.
-		</p>
-       </form>
-
-	</div>
-    
-	<div id="footer-wrapper">
-		<footer id="footer"><p style="font-style: italic;font-size:11px;">Equal Opportunity Institution:eSchool is an affirmative action/equal opportunity employer.</p></footer>
-	</div>
+<table id="myLeft2" border="1" style="width: 80%">
+    <tr>
+   		<th>Grades</th>
+   		<th>RegDate</th>
+   		<th>SemstDate</th>
+   		<th>SemBr</th>
+   		<th>FexamDate</th>
+   		<th>RltDate</th>
+   	</tr>
+   		<c:forEach items="${requestScope.regDate}" var="regDate">
+</head>
+<body>
 
 </body>
-
 </html>
