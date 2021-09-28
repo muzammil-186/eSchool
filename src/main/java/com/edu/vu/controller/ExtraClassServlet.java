@@ -40,8 +40,8 @@ public class ExtraClassServlet extends HttpServlet {
 			List<Course> list = new ArrayList<Course>();
 			list = courseDao.getCourses("ENRICHMENT");
 			request.setAttribute("courses", list);
-		//	System.out.println("EnrhServlet-doGet we r here!!");
-		//	String pathInfo = request.getPathInfo();
+			System.out.println("EnrhServlet-doGet we r here!!");
+			String pathInfo = request.getPathInfo();
 			request.getRequestDispatcher("/WEB-INF/views/ExtraClasses.jsp").forward(request, response);
 		}catch(ClassNotFoundException cnfe) {}
 	
