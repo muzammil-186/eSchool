@@ -151,18 +151,8 @@
 <form action="<%= request.getContextPath()%>/EnrhServlet" method="post">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<table id="myLeft2" border="1" style="width: 80%">
-    <tr>
-   		<th>Grades</th>
-   		<th>RegDate</th>
-   		<th>SemstDate</th>
-   		<th>SemBr</th>
-   		<th>FexamDate</th>
-   		<th>RltDate</th>
-   	</tr>
-   		<c:forEach items="${requestScope.regDate}" var="regDate">
-</head>
-<body>
+
+
 
 </body>
 </html>
