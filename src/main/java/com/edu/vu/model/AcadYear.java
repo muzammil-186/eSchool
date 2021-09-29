@@ -1,14 +1,14 @@
 package com.edu.vu.model;
 
-import java.util.ArrayList;
+
 
 public class AcadYear {
 	private int grades;
 	private String regDate;
-	private String semstDate;
-	private String sembr;
-	private String FexamDate;
-	private String ReaDate;
+	private String semesterStartDate;
+	private String semesterBreak;
+	private String finalExamDate;
+	private String resultDate;
 	public int getGrades() {
 		return grades;
 	}
@@ -18,34 +18,32 @@ public class AcadYear {
 	public void setRegDate(String regDate) {
 		this.regDate = regDate;
 	}
-	public String getSemstDate() {
-		return semstDate;
+	public String getSemesterStartDate() {
+		return semesterStartDate;
 	}
-	public void setSemstDate(String semstDate) {
-		this.semstDate = semstDate;
+	public void setSemesterStartDate(String semesterStartDate) {
+		this.semesterStartDate = semesterStartDate;
 	}
-	public String getSembr() {
-		return sembr;
+	public String getSemesterBreak() {
+		return semesterBreak;
 	}
-	public void setSembr(String sembr) {
-		this.sembr = sembr;
+	public void setSemesterBreak(String semesterBreak) {
+		this.semesterBreak = semesterBreak;
 	}
-	public String getFexamDate() {
-		return FexamDate;
+	public String getFinalExamDate() {
+		return finalExamDate;
 	}
-	public void setFexamDate(String fexamDate) {
-		FexamDate = fexamDate;
+	public void setFinalExamDate(String finalExamDate) {
+		this.finalExamDate = finalExamDate;
 	}
-	public String getReaDate() {
-		return ReaDate;
+	public String getResultDate() {
+		return resultDate;
 	}
-	public void setReaDate(String reaDate) {
-		ReaDate = reaDate;
+	public void setResultDate(String resultDate) {
+		this.resultDate = resultDate;
 	}
 	public void setGrades(int grades) {
 		this.grades = grades;
 	}
 	
-	
-
 }

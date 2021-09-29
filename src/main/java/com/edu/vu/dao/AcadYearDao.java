@@ -25,9 +25,9 @@ public class AcadYearDao {
      * Copyright (C) 2021 Muzammil Ahmed. All Rights Reserved.
      */
      
-     public ArrayList<AcadYear> getAllACADYEAR()throws ClassNotFoundException{
+     public ArrayList<AcadYear> getAllAcadyear()throws ClassNotFoundException{
 		ArrayList<AcadYear> AcadYearList = new ArrayList<AcadYear>();
-		String GET_ACADYEAR_SQL = "Select * from ACADYEAR";
+		String GET_ACADYEAR_SQL = "Select * from acadyear";
 		Connection connection = null;
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -42,9 +42,9 @@ public class AcadYearDao {
 				AcadYear currentAcadYear = new AcadYear();
 				currentAcadYear.setGrades(rs.getInt("GRADES"));
 				currentAcadYear.setRegDate(rs.getString("REG_DATE"));
-				currentAcadYear.setSembr(rs.getString("SEMBR"));
-				currentAcadYear.setFexamDate(rs.getString("FEXAM_DATE"));
-				currentAcadYear.setReaDate(rs.getString("REA_DATE"));
+				currentAcadYear.setSemesterBreak(rs.getString("SEMBR"));
+				currentAcadYear.setFinalExamDate(rs.getString("FEXAM_DATE"));
+				currentAcadYear.setResultDate(rs.getString("REA_DATE"));
 				
 				AcadYearList.add(currentAcadYear);
 			}
