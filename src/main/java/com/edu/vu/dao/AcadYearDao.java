@@ -41,10 +41,11 @@ public class AcadYearDao {
 			while(rs.next()) {
 				AcadYear currentAcadYear = new AcadYear();
 				currentAcadYear.setGrades(rs.getInt("GRADES"));
+				currentAcadYear.setSemesterStartDate(rs.getString("SEMST_DATE"));
 				currentAcadYear.setRegDate(rs.getString("REG_DATE"));
 				currentAcadYear.setSemesterBreak(rs.getString("SEMBR"));
 				currentAcadYear.setFinalExamDate(rs.getString("FEXAM_DATE"));
-				currentAcadYear.setResultDate(rs.getString("REA_DATE"));
+				currentAcadYear.setResultDate(rs.getString("RSLT_DATE"));
 				
 				AcadYearList.add(currentAcadYear);
 			}

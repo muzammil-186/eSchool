@@ -151,8 +151,32 @@
 <form action="<%= request.getContextPath()%>/EnrhServlet" method="post">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-
-
-
+<table id="myLeft2" border="1" style="width: 80%">
+    <tr>
+   		<th>Grades</th>
+   		<th>RegistrationDate</th>
+   		<th>SemesterStart</th>
+   		<th>SemesterBreak</th>
+   		<th>FinalExam</th>
+   		<th>ResultAnnouncement</th>
+   		
+   	</tr>
+   	<c:forEach items="${requestScope.academics}" var="academic">
+	    <tr>
+		    <td><c:out value="${academic.grades}"></c:out></td>
+		    <td><c:out value="${academic.regDate}"></c:out></td>
+		    <td><c:out value="${academic.semesterStartDate}"></c:out></td>
+		    <td><c:out value="${academic.semesterBreak}"></c:out></td>
+		    <td><c:out value="${academic.finalExamDate}"></c:out></td>
+		    <td><c:out value="${academic.resultDate}"></c:out></td>
+	    </tr>
+   
+   </c:forEach>
+</table>
+   	
+	<spacer type="horizontal" width="100" height="100"><></spacer>
+   
+	</form>
+</div>
 </body>
 </html>

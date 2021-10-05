@@ -180,7 +180,7 @@
 			</ul>
 			<h3>Resources</h3>
 			<ul>
-				<li><a href="#">Academic Calendar</a></li>
+				<li><a href="AcadYearDetailServlet">Academic Calendar</a></li>
 				<li><a href="#">Student Handbook</a></li>
 				<li><a href="#">Catalog</a></li>
 			</ul>
