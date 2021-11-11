@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import com.edu.vu.model.User;
 
@@ -51,10 +52,12 @@ public class UserDao {
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		Connection connection = 
 				DriverManager.getConnection("jdbc:mysql://localhost:3306/eschool?useSSL=false", "root", "abc123");
+		try {
 		PreparedStatement stmt = connection.prepareStatement("SELECT * FROM user WHERE username=? AND password=?");
 		stmt.setString(1, username);
 		stmt.setString(2, password);
 		ResultSet rs = stmt.executeQuery();
+		
 	    if(rs.next())	{
 	    	currentUser = new User();
 			currentUser.setId(rs.getString("ID"));
@@ -66,8 +69,44 @@ public class UserDao {
 			currentUser.setRole(rs.getString("ROLE"));
 
 	    }
-	    connection.close();
-	    return currentUser; 	
+	   
+		}catch(SQLException ignore) {
+			throw new Exception(); // To be Further coded
+			
+		}finally {
+		 
+			   connection.close(); // Always called
+			 
+		}
+	    
+		  return currentUser; 	
+		
+	}
+	/**
+	 * getUser 
+	 * @param username
+	 * @param password
+	 * @return
+	 * @throws Exception
+	 */
+	public void updateUserStatus(String id, int status)throws Exception {
+		
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		Connection connection = 
+				DriverManager.getConnection("jdbc:mysql://localhost:3306/eschool?useSSL=false", "root", "abc123");
+		try {
+				PreparedStatement stmt = connection.prepareStatement("UPDATE  user SET status=? WHERE ID=?");
+				stmt.setInt(1, status);
+				stmt.setString(2, id);
+			    stmt.executeUpdate();
+		}catch(SQLException ignore) {
+			throw new Exception(); // To be Further coded
+			
+		}finally {
+		 
+			   connection.close(); // Always called
+		
+		}
 		
 	}
 

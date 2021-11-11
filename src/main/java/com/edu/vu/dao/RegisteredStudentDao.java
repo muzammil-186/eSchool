@@ -27,7 +27,7 @@ public class RegisteredStudentDao {
 	 */
 	public RegisteredStudent getRegisteredStudent(String userId)throws ClassNotFoundException{
 		int result =0;
-		String GET_USER_SQL = "Select * from REGSTUDENT where STUDENTID = " + userId;   
+		String GET_USER_SQL = "Select * from ADMITTEDSTUDENT where STUDENTID = " + userId;   
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		ResultSet rs =null;
 		Connection connection = null;
@@ -42,7 +42,7 @@ public class RegisteredStudentDao {
 						
 			if(rs.next()) {
 				
-				registeredStudent.setStudentId(rs.getString("STUDENTID"));
+				registeredStudent.setStudentId(rs.getInt("STUDENTID"));
 				registeredStudent.setFirstName(rs.getString("FIRST_NAME"));
 				registeredStudent.setLastName(rs.getString("LAST_NAME"));
 				registeredStudent.setDob(rs.getString("DOB"));
@@ -63,6 +63,43 @@ public class RegisteredStudentDao {
 			}catch(Exception mo) {}	
 		}
 		return registeredStudent;
+	}
+	public boolean addRegisteredStudent(RegisteredStudent registeredStudent)throws ClassNotFoundException{
+		boolean result =false;
+		String ADD_STUDENT_SQL = "INSERT INTO ADMITTEDSTUDENT(FIRST_NAME, LAST_NAME, DOB, GRADE, PARENTID, STATUS)  VALUES (?,?,?,?,?,?) ";  
+		                                                       
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		ResultSet rs =null;
+		Connection connection = null;
+		
+		try {
+			 connection = 
+					DriverManager.getConnection("jdbc:mysql://localhost:3306/eschool?useSSL=false", "root", "abc123");
+		
+						
+			PreparedStatement pstatement = connection.prepareStatement(ADD_STUDENT_SQL);
+			
+			pstatement.setString(1,registeredStudent.getFirstName());
+			pstatement.setString(2,registeredStudent.getLastName());
+			pstatement.setString(3,registeredStudent.getDob());
+			pstatement.setInt(4,registeredStudent.getGrade());
+			pstatement.setString(5,registeredStudent.getParentId());
+			pstatement.setString(6,registeredStudent.getStatus());
+			
+			pstatement.execute();
+						
+				
+			result= true;
+						
+		}catch(Exception moae) {
+			
+			System.out.println("Encountered Exception:" + moae.getClass().getName()+ " With message:"+ moae.getMessage());
+		}finally {
+			try{
+				connection.close();
+			}catch(Exception mo) {}	
+		}
+		return result;
 	}
 
 

@@ -32,7 +32,7 @@ public class AcadYearDetailServlet extends HttpServlet {
 	/**
 	 * doGet
 	 * This method gets called by Tomcat after webServlet annotation is resolved
-	 * Refer to line 16.In this method we present the user Login ui.
+	 * Refer to line 19.In this method we present Academic year to ui.
 	 * @param <AcadYearInfo>
 	 * @param <AcadYearlist>
 	 * @param <AcadYear>

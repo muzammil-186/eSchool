@@ -1,7 +1,7 @@
 package com.edu.vu.model;
 
 public class RegisteredStudent {
-	private String studentId;
+	private int studentId;
 	private String firstName;
 	private String lastName;
 	private String dob;
@@ -27,10 +27,10 @@ public class RegisteredStudent {
      * @version 1.0 
      * Copyright (C) 2021 Muzammil Ahmed. All Rights Reserved.
 	 */
-	public String getStudentId() {
+	public int getStudentId() {
 		return studentId;
 	}
-	public void setStudentId(String studentId) {
+	public void setStudentId(int studentId) {
 		this.studentId = studentId;
 	}
 	public String getFirstName() {

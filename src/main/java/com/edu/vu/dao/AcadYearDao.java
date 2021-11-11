@@ -27,7 +27,7 @@ public class AcadYearDao {
      
      public ArrayList<AcadYear> getAllAcadyear()throws ClassNotFoundException{
 		ArrayList<AcadYear> AcadYearList = new ArrayList<AcadYear>();
-		String GET_ACADYEAR_SQL = "Select * from acadyear";
+		String GET_ACADYEAR_SQL = "Select * from acadc";
 		Connection connection = null;
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
@@ -44,8 +44,8 @@ public class AcadYearDao {
 				currentAcadYear.setSemesterStartDate(rs.getString("SEMST_DATE"));
 				currentAcadYear.setRegDate(rs.getString("REG_DATE"));
 				currentAcadYear.setSemesterBreak(rs.getString("SEMBR"));
-				currentAcadYear.setFinalExamDate(rs.getString("FEXAM_DATE"));
-				currentAcadYear.setResultDate(rs.getString("RSLT_DATE"));
+				currentAcadYear.setFinalExamDate(rs.getString("FINEXM_DATE"));
+				currentAcadYear.setResultDate(rs.getString("RLTA_DATE"));
 				
 				AcadYearList.add(currentAcadYear);
 			}

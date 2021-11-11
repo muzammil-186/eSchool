@@ -44,7 +44,7 @@ public class TuitionFeeDao {
 				currentTuitionFee.setGrades(rs.getInt("GRADES"));
 				currentTuitionFee.setFee(rs.getString("FEE"));
 				currentTuitionFee.setMiscFee(rs.getString("MISC_FEE"));
-				currentTuitionFee.setTuitionFeeRemark(rs.getString("TUTIONFEE_REMARK"));
+				currentTuitionFee.setTuitionFeeRemark(rs.getString("TUITIONFEE_REMARK"));
 				currentTuitionFee.setPayDueDate(rs.getString("PAY_DUEDATE"));
 				
 				tuitionFeeList.add(currentTuitionFee);
