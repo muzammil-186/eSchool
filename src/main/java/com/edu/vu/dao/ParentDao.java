@@ -32,8 +32,10 @@ public class ParentDao {
 		Connection connection =null;
 		Parent parent = new Parent();
 		try {
-			 connection = 
-					DriverManager.getConnection("jdbc:mysql://localhost:3306/eschool?useSSL=false", "root", "abc123");
+			//Class.forName("com.mysql.cj.jdbc.Driver");
+			
+			connection = 
+					DriverManager.getConnection("jdbc:mysql://localhost:3306/eschool?allowPublicKeyRetrieval=true&useSSL=false", "root", "admin");
 		
 			Statement statement = connection.createStatement();
 			rs = statement.executeQuery(GET_USER_SQL);

@@ -12,15 +12,19 @@ public class UserDao {
 	
 	public int registerUser(User user)throws ClassNotFoundException{
 		int result =0;
+		Connection connection = null;
 		String INSERT_USERS_SQL = "INSERT INTO USER " + 
-		" (ID, STATUS, USERNAME, PASSWORD, FIRST_NAME, LAST_NAME,DOB,ROLE, VERSION) VALUES " +
-	    "(?, ?, ?, ?, ?, ?, ?,?,?);";
+		" (ID, STATUS, USERNAME, PASSWORD, FIRST_NAME, LAST_NAME,DOB,PARENTID,GRADE, ROLE, VERSION) VALUES " +
+	    "(?, ?, ?, ?, ?, ?, ?,?,?,?,?);";
 		
 		//Class.forName("com.mysql.jdbc.Driver");
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		try {
-			Connection connection = 
-					DriverManager.getConnection("jdbc:mysql://localhost:3306/eschool?useSSL=false", "root", "abc123");
+			
+			//Class.forName("com.mysql.cj.jdbc.Driver");
+			
+			connection = 
+					DriverManager.getConnection("jdbc:mysql://localhost:3306/eschool?allowPublicKeyRetrieval=true&useSSL=false", "root", "admin");
 		
 			PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USERS_SQL);
 			preparedStatement.setString(1, user.getId());
@@ -30,8 +34,10 @@ public class UserDao {
 			preparedStatement.setString(5, user.getFirstName());
 			preparedStatement.setString(6, user.getLastName());
 			preparedStatement.setString(7, user.getDob());
-			preparedStatement.setString(8, user.getRole());
-			preparedStatement.setInt(9, user.getVersion());
+			preparedStatement.setString(8, user.getParentId());
+			preparedStatement.setInt(9, user.getGrade());
+			preparedStatement.setString(10, user.getRole());
+			preparedStatement.setInt(11, user.getVersion());
 			System.out.println("Executing query:" + preparedStatement);
 			result = preparedStatement.executeUpdate();
 			
@@ -49,9 +55,12 @@ public class UserDao {
 	 */
 	public User getUser(String username, String password)throws Exception {
 		User currentUser = null;
+		int gradeTest =0;
 		Class.forName("com.mysql.cj.jdbc.Driver");
+		
 		Connection connection = 
-				DriverManager.getConnection("jdbc:mysql://localhost:3306/eschool?useSSL=false", "root", "abc123");
+				DriverManager.getConnection("jdbc:mysql://localhost:3306/eschool?allowPublicKeyRetrieval=true&useSSL=false", "root", "admin");
+	
 		try {
 		PreparedStatement stmt = connection.prepareStatement("SELECT * FROM user WHERE username=? AND password=?");
 		stmt.setString(1, username);
@@ -66,11 +75,14 @@ public class UserDao {
 			currentUser.setFirstName(rs.getString("FIRST_NAME"));
 			currentUser.setLastName(rs.getString("LAST_NAME"));
 			currentUser.setDob(rs.getString("DOB"));
+			currentUser.setParentId(rs.getString("PARENTID"));
+			currentUser.setGrade(rs.getInt("GRADE"));
 			currentUser.setRole(rs.getString("ROLE"));
 
 	    }
 	   
 		}catch(SQLException ignore) {
+			System.out.println(ignore.getMessage());
 			throw new Exception(); // To be Further coded
 			
 		}finally {
@@ -92,8 +104,10 @@ public class UserDao {
 	public void updateUserStatus(String id, int status)throws Exception {
 		
 		Class.forName("com.mysql.cj.jdbc.Driver");
+		
 		Connection connection = 
-				DriverManager.getConnection("jdbc:mysql://localhost:3306/eschool?useSSL=false", "root", "abc123");
+				DriverManager.getConnection("jdbc:mysql://localhost:3306/eschool?allowPublicKeyRetrieval=true&useSSL=false", "root", "admin");
+	
 		try {
 				PreparedStatement stmt = connection.prepareStatement("UPDATE  user SET status=? WHERE ID=?");
 				stmt.setInt(1, status);

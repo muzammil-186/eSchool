@@ -85,6 +85,8 @@ public class UserServlet extends HttpServlet {
 		aUser.setPassword(password);
 		aUser.setUserName(userName);
 		aUser.setDob(request.getParameter("dob"));
+		aUser.setParentId(request.getParameter("pid"));
+		aUser.setGrade(Integer.parseInt(request.getParameter("grade")));
 		aUser.setVersion(0);
 		aUser.setStatus(0);
 		if (variableRole.equalsIgnoreCase("student")) {

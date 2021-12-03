@@ -179,7 +179,14 @@
     <td>Date of Birth (DD/MM/YYYY)</td>
     <td><input type="text" name="dob"/></td>
 </tr>
-
+<tr>
+    <td>Parent NIC (Student role only)</td>
+    <td><input type="text" name="pid"/></td>
+</tr>
+<tr>
+    <td>Student Grade</td>
+    <td><input type="text" name="grade"/></td>
+</tr>
 <tr>
     <td>User Name</td>
     <td><input type="text" name="userName"/></td>

@@ -9,9 +9,24 @@ public class User {
     private String password;
     private int version;
     private String dob;
+    private String parentId;
+    private int grade;
     private String role;
     
     
+    
+	public int getGrade() {
+		return grade;
+	}
+	public void setGrade(int grade) {
+		this.grade = grade;
+	}
+	public String getParentId() {
+		return parentId;
+	}
+	public void setParentId(String parentId) {
+		this.parentId = parentId;
+	}
 	public String getDob() {
 		return dob;
 	}

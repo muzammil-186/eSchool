@@ -33,8 +33,10 @@ public class RegisteredStudentDao {
 		Connection connection = null;
 		RegisteredStudent registeredStudent = new RegisteredStudent();
 		try {
-			 connection = 
-					DriverManager.getConnection("jdbc:mysql://localhost:3306/eschool?useSSL=false", "root", "abc123");
+			//Class.forName("com.mysql.cj.jdbc.Driver");
+			
+			connection = 
+					DriverManager.getConnection("jdbc:mysql://localhost:3306/eschool?allowPublicKeyRetrieval=true&useSSL=false", "root", "admin");
 		
 						
 			Statement statement = connection.createStatement();
@@ -73,8 +75,10 @@ public class RegisteredStudentDao {
 		Connection connection = null;
 		
 		try {
-			 connection = 
-					DriverManager.getConnection("jdbc:mysql://localhost:3306/eschool?useSSL=false", "root", "abc123");
+			//Class.forName("com.mysql.cj.jdbc.Driver");
+			
+			connection = 
+					DriverManager.getConnection("jdbc:mysql://localhost:3306/eschool?allowPublicKeyRetrieval=true&useSSL=false", "root", "admin");
 		
 						
 			PreparedStatement pstatement = connection.prepareStatement(ADD_STUDENT_SQL);
