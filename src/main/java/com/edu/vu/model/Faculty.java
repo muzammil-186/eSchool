@@ -6,9 +6,19 @@ public class Faculty {
 	private String lastName;
 	private String subjects;
 	private String grades;
+	private String status;
 	private String email;
 	
 	
+	
+	
+	
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	public String getEmployeeId() {
 		return employeeId;
 	}

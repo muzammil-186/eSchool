@@ -24,7 +24,7 @@ public class UserDao {
 			//Class.forName("com.mysql.cj.jdbc.Driver");
 			
 			connection = 
-					DriverManager.getConnection("jdbc:mysql://localhost:3306/eschool?allowPublicKeyRetrieval=true&useSSL=false", "root", "admin");
+					DriverManager.getConnection("jdbc:mysql://localhost:3306/eschool?allowPublicKeyRetrieval=true&useSSL=false", "root", "abc123");
 		
 			PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USERS_SQL);
 			preparedStatement.setString(1, user.getId());
@@ -59,12 +59,60 @@ public class UserDao {
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		
 		Connection connection = 
-				DriverManager.getConnection("jdbc:mysql://localhost:3306/eschool?allowPublicKeyRetrieval=true&useSSL=false", "root", "admin");
+				DriverManager.getConnection("jdbc:mysql://localhost:3306/eschool?allowPublicKeyRetrieval=true&useSSL=false", "root", "abc123");
 	
 		try {
 		PreparedStatement stmt = connection.prepareStatement("SELECT * FROM user WHERE username=? AND password=?");
 		stmt.setString(1, username);
 		stmt.setString(2, password);
+		ResultSet rs = stmt.executeQuery();
+		
+	    if(rs.next())	{
+	    	currentUser = new User();
+			currentUser.setId(rs.getString("ID"));
+			currentUser.setUserName(rs.getString("USERNAME"));
+			currentUser.setPassword(rs.getString("PASSWORD"));
+			currentUser.setFirstName(rs.getString("FIRST_NAME"));
+			currentUser.setLastName(rs.getString("LAST_NAME"));
+			currentUser.setDob(rs.getString("DOB"));
+			currentUser.setParentId(rs.getString("PARENTID"));
+			currentUser.setGrade(rs.getInt("GRADE"));
+			currentUser.setRole(rs.getString("ROLE"));
+
+	    }
+	   
+		}catch(SQLException ignore) {
+			System.out.println(ignore.getMessage());
+			throw new Exception(); // To be Further coded
+			
+		}finally {
+		 
+			   connection.close(); // Always called
+			 
+		}
+	    
+		  return currentUser; 	
+		
+	}
+	/**
+	 * getUser overloaded
+	 * @param username
+	 * @param password
+	 * @return
+	 * @throws Exception
+	 */
+	public User getUser(String username)throws Exception {
+		User currentUser = null;
+		int gradeTest =0;
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		
+		Connection connection = 
+				DriverManager.getConnection("jdbc:mysql://localhost:3306/eschool?allowPublicKeyRetrieval=true&useSSL=false", "root", "abc123");
+	
+		try {
+		PreparedStatement stmt = connection.prepareStatement("SELECT * FROM user WHERE username=?");
+		stmt.setString(1, username);
+		//stmt.setString(2, password);
 		ResultSet rs = stmt.executeQuery();
 		
 	    if(rs.next())	{
@@ -106,7 +154,7 @@ public class UserDao {
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		
 		Connection connection = 
-				DriverManager.getConnection("jdbc:mysql://localhost:3306/eschool?allowPublicKeyRetrieval=true&useSSL=false", "root", "admin");
+				DriverManager.getConnection("jdbc:mysql://localhost:3306/eschool?allowPublicKeyRetrieval=true&useSSL=false", "root", "abc123");
 	
 		try {
 				PreparedStatement stmt = connection.prepareStatement("UPDATE  user SET status=? WHERE ID=?");
@@ -121,6 +169,55 @@ public class UserDao {
 			   connection.close(); // Always called
 		
 		}
+		
+	}
+	
+	/**
+	 * getUser 
+	 * @param username
+	 * @param password
+	 * @return
+	 * @throws Exception
+	 */
+	public User getUserByParent(String studentId, String parentId)throws Exception {
+		User currentUser = null;
+		int gradeTest =0;
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		
+		Connection connection = 
+				DriverManager.getConnection("jdbc:mysql://localhost:3306/eschool?allowPublicKeyRetrieval=true&useSSL=false", "root", "abc123");
+	
+		try {
+		PreparedStatement stmt = connection.prepareStatement("SELECT * FROM user WHERE id=? AND parentid=?");
+		stmt.setString(1, studentId);
+		stmt.setString(2, parentId);
+		ResultSet rs = stmt.executeQuery();
+		
+	    if(rs.next())	{
+	    	currentUser = new User();
+			currentUser.setId(rs.getString("ID"));
+			currentUser.setUserName(rs.getString("USERNAME"));
+			currentUser.setPassword(rs.getString("PASSWORD"));
+			currentUser.setFirstName(rs.getString("FIRST_NAME"));
+			currentUser.setLastName(rs.getString("LAST_NAME"));
+			currentUser.setDob(rs.getString("DOB"));
+			currentUser.setParentId(rs.getString("PARENTID"));
+			currentUser.setGrade(rs.getInt("GRADE"));
+			currentUser.setRole(rs.getString("ROLE"));
+
+	    }
+	   
+		}catch(SQLException ignore) {
+			System.out.println(ignore.getMessage());
+			throw new Exception(); // To be Further coded
+			
+		}finally {
+		 
+			   connection.close(); // Always called
+			 
+		}
+	    
+		  return currentUser; 	
 		
 	}
 

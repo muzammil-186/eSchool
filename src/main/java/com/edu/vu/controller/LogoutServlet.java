@@ -39,9 +39,9 @@ public class LogoutServlet extends HttpServlet {
 		User user = null;
 		HttpSession sess= request.getSession(false);// Get current session
 		String userName=(String) sess.getAttribute("userName");
-		String password=(String) sess.getAttribute("password");
+		//String password=(String) sess.getAttribute("password");commented out due to security concern
 		try {
-			user =  userDao.getUser(userName, password);
+			user =  userDao.getUser(userName);//, password); 
 			String id=user.getId();
 			userDao.updateUserStatus(id, LOGGED_OUT);
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/views/login/UserLogin.jsp");

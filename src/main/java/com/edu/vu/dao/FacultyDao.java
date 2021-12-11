@@ -2,10 +2,12 @@ package com.edu.vu.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import com.edu.vu.model.Employee;
 import com.edu.vu.model.Faculty;
 
 
@@ -33,7 +35,7 @@ public class FacultyDao {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 		
 			connection = 
-					DriverManager.getConnection("jdbc:mysql://localhost:3306/eschool?allowPublicKeyRetrieval=true&useSSL=false", "root", "admin");
+					DriverManager.getConnection("jdbc:mysql://localhost:3306/eschool?allowPublicKeyRetrieval=true&useSSL=false", "root", "abc123");
 		
 			Statement statement = connection.createStatement();
 			ResultSet rs = statement.executeQuery(GET_FACULTY_SQL);
@@ -45,6 +47,7 @@ public class FacultyDao {
 				currentFaculty.setLastName(rs.getString("LAST_NAME"));
 				currentFaculty.setGrades(rs.getString("GRADES"));
 				currentFaculty.setSubjects(rs.getString("SUBJECTS"));
+				currentFaculty.setStatus(rs.getString("STATUS"));
 				currentFaculty.setEmail(rs.getString("EMAIL"));
 				facultyList.add(currentFaculty);
 			}
@@ -59,5 +62,47 @@ public class FacultyDao {
 		return facultyList;
 	}
 	
+	public boolean addFaculty(Faculty faculty)throws ClassNotFoundException{
+		boolean result =false;
+		String ADD_STUDENT_SQL = "INSERT INTO FACULTY(EMPLOYEEID, FIRST_NAME, LAST_NAME, GRADES, SUBJECTS, STATUS, EMAIL)  VALUES (?,?,?,?,?,?,?) ";  
+		                                                       
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		ResultSet rs =null;
+		Connection connection = null;
+		
+		try {
+			//Class.forName("com.mysql.cj.jdbc.Driver");
+			
+			connection = 
+					DriverManager.getConnection("jdbc:mysql://localhost:3306/eschool?allowPublicKeyRetrieval=true&useSSL=false", "root", "abc123");
+		
+						
+			PreparedStatement pstatement = connection.prepareStatement(ADD_STUDENT_SQL);
+			
+			pstatement.setString(1,faculty.getEmployeeId());
+			pstatement.setString(2,faculty.getFirstName());
+			pstatement.setString(3,faculty.getLastName());
+			pstatement.setString(4,faculty.getGrades());
+			pstatement.setString(5,faculty.getSubjects());
+			pstatement.setString(6,faculty.getStatus());
+			pstatement.setString(7,faculty.getEmail());
+			
+			
+			pstatement.execute();
+						
+				
+			result= true;
+						
+		}catch(Exception moae) {
+			
+			System.out.println("Encountered Exception:" + moae.getClass().getName()+ " With message:"+ moae.getMessage());
+		}finally {
+			try{
+				connection.close();
+			}catch(Exception mo) {}	
+		}
+		return result;
+	}
+
 	
 }

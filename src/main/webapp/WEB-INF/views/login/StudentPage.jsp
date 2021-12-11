@@ -168,7 +168,7 @@
 				<p>Please don't forget to register your attendence</p><p>Welcome and Enjoy Learning.</p>
 			</article>	
 			<!--  iframe width="420" height="345" src="https://www.youtube.com/embed/E-gnJxK5tu0" -->
-			<iframe width="420" height="345" src="https://www.youtube.be/embed//kIPUF5xgtjk">
+			<iframe width="520" height="345" src="https://www.youtube.be/embed//kIPUF5xgtjk">
 			</iframe>							
 		</main>
 		
@@ -178,7 +178,7 @@
 				<li><a href="AttendenceServlet">Register Attendence</a></li>
 				<li><a href="AttendenceViewServlet">Attendence Report</a></li>
 				<li><a href="HomeworkServlet">View HomeWork</a></li>
-				<li><a href="ExamResultServlet">View Letter Grades</a></li>		
+				<li><a href="QuizResultsServlet">View Letter Grades</a></li>		
 			</ul>
 
 		</nav>

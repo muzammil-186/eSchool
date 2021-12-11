@@ -85,16 +85,17 @@ public class UserServlet extends HttpServlet {
 		aUser.setPassword(password);
 		aUser.setUserName(userName);
 		aUser.setDob(request.getParameter("dob"));
-		aUser.setParentId(request.getParameter("pid"));
-		aUser.setGrade(Integer.parseInt(request.getParameter("grade")));
+		
+		
 		aUser.setVersion(0);
 		aUser.setStatus(0);
 		if (variableRole.equalsIgnoreCase("student")) {
-			System.out.println("processing student");
+			    aUser.setParentId(request.getParameter("pid"));
+			    aUser.setGrade(Integer.parseInt(request.getParameter("grade")));
 				result = isValidStudent(aUser);
         }else if(variableRole.equalsIgnoreCase("parent")) {
         	    result = isValidParent(aUser);	       
-        }else if(variableRole.equalsIgnoreCase("employee")) {
+        }else if(variableRole.equalsIgnoreCase("employee") || variableRole.equalsIgnoreCase("admin")) {
         	    result = isValidEmployee(aUser);      
         }
 			//End of verification

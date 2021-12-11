@@ -6,7 +6,8 @@
 <meta charset="ISO-8859-1">
 <title>Welcome to e-School Learning at VU</title>
 <style type="text/css">
-/* Layout */
+
+		/* Layout */
 		body {
 			min-width: 630px;
 		}
@@ -36,24 +37,17 @@
 			right: 240px;
 			margin-left: -100%;
 		}
-		#myLeft2 {
-			
-			background-color: #DCDCDC;
-			
-		}
-		#myLeft {
-			
-			curser: pointer;
-			font-size: 16px;
-			margin-left: -73%;
-		}
-#right {
+		
+		#right {
 			width: 130px;
 			padding: 0 10px;
 			margin-right: -100%;
 		}
 		
 		#footer {
+		    position: relative;
+		    margin-top: -180;
+		    height: 80px;
 			clear: both;
 		}
 		
@@ -85,6 +79,7 @@
 			margin-bottom: -10000px;
 			background: #fff;
 		}
+
 		/* Aesthetics */
 		body {
 			margin: 0;
@@ -103,6 +98,25 @@
 			padding: 0;
 		}
 		
+		nav ul a {
+			color: darkgreen;
+			text-decoration: none;
+		}
+
+		#header, #footer {
+			font-size: large;
+			padding: 0.3em;
+			background: #BCCE98;
+		}
+
+		#left {
+			background: #DAE9BC;
+		}
+		
+		#right {
+			background: #F7FDEB;
+		}
+
 		#center {
 			background: #fff;
 		}
@@ -125,16 +139,30 @@
         #image-text{
             position: absolute;
             top: 20%;
-            left: 55%;
+            left: 50%;
             font-family: 'Roboto';
             color: #000;
             transform: translate(-30%, -30%);
             text-align: center;
         }
+        .wrapper{
+   			display : inline;
+    		border:1px solid lightgray;
+    		padding:4px;
+    		box-shadow:inset 1px 1px 1px rgba(0,0,0,.1)
+		}
+		input {
+    		border:0;
+		}
+		label {
+		color : gray;
+		}
 	</style>
+	
+	
 </head>
 <body>
-		<header id="header">
+<header id="header">
 		
 	
 	<!-- Image menu in Header to contain an Image and
@@ -146,37 +174,30 @@
 		</h2>
 	</div>
 </header>
-<div  align="center">
-<h1>Assignments </h1>
-<form action="<%= request.getContextPath()%>/EnrhServlet" method="post">
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    <spacer type="horizontal" width="100" height="100">.</spacer>
 
-<table id="myLeft2" border="1" style="width: 80%">
-    <tr>
-   		<th>Grade</th>
-   		<th>Subject</th>
-   		<th>Assign Date</th>
-   		<th>Due Date</th>
-   		<th>Task</th>
-   		
-   	</tr>
-   	<c:forEach items="${requestScope.assignments}" var="assignment">
-	    <tr>
-		    <td><c:out value="${assignment.grade}"></c:out></td>
-		    <td><c:out value="${assignment.subject}"></c:out></td>
-		    <td><c:out value="${assignment.assignDate}"></c:out></td>
-		    <td><c:out value="${assignment.dueDate}"></c:out></td>
-		    <td><c:out value="${assignment.task}"></c:out></td>
-		    
-	    </tr>
-   
-   </c:forEach>
-</table>
-   	
-		<spacer type="horizontal" width="100" height="100"><></spacer>
-   
-	</form>
-</div>
+	<div id="container">
+		<h1>View Assignments</h1>
+		<spacer type="horizontal" width="100" height="100"></spacer>
+		<form action="<%= request.getContextPath()%>/HomeworkServlet" method="post">
+		    <spacer type="horizontal" width="100" height="200">.</spacer>
+		     
+			
+    		<label for="from">from:</label>
+    		<input type="text" id="from" name="from">
+    		<label for="to">to:</label>
+    		<input type="text" id="to" name="to">
+	
+	   		
+			<input type="submit" value="Submit">
+       </form>
+
+	</div>
+    
+	<div id="footer-wrapper">
+		<footer id="footer"><p style="font-style: italic;font-size:11px;">Equal Opportunity Institution:eSchool is an affirmative action/equal opportunity employer.</p></footer>
+	</div>
+
 </body>
+
 </html>
-		

@@ -45,11 +45,11 @@ public class AttendenceServlet extends HttpServlet {
 		Attendence attendence = new Attendence();
 		HttpSession sess= request.getSession(false);// Get current session
 		String userName=(String) sess.getAttribute("userName");
-		String password=(String) sess.getAttribute("password");
+		//String password=(String) sess.getAttribute("password");
 		try {
 			String timeStamp = new SimpleDateFormat("MM/dd/yyyy_HHmm").format(Calendar.getInstance().getTime());
 			String justTheDate = timeStamp.substring(0, 10);
-			user =  userDao.getUser(userName, password);
+			user =  userDao.getUser(userName);//, password);
 			attendence.setAttendenceDate(justTheDate);// to add time validation
 			attendence.setAttendenceStatus("P");
 			attendence.setGrade(user.getGrade());

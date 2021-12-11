@@ -42,8 +42,8 @@ public class AttendenceViewServlet extends HttpServlet {
 			
 			HttpSession sess= request.getSession(false);// Get current session
 			String userName=(String) sess.getAttribute("userName");
-			String password=(String) sess.getAttribute("password");
-			user =  userDao.getUser(userName, password);
+			//String password=(String) sess.getAttribute("password");
+			user =  userDao.getUser(userName);//, password);
 			
 			List<Attendence> list = new ArrayList<Attendence>();
 			list = attendDao.getAttendence(user.getId(), null, null);

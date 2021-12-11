@@ -190,8 +190,8 @@
 		<div id="right" class="column">
 		    <h3>Login</h3>
 			<ul>
-				<li><a href="LoginServlet">Login Into Account</a></li>				
-				<li><a href="UserServlet">Create New User</a></li>
+				<li><a href="LoginServlet">Login</a></li>				
+				<li><a href="UserServlet">New User</a></li>
 			</ul>
 		</div>
 

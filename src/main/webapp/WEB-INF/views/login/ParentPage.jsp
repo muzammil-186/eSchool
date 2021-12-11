@@ -165,25 +165,20 @@
 	<div id="container">
 	<main id="center" class="column">
 			<article>
-			
 				<h1>Parent</h1>
-				<p>In one learning platform, watch your math or chemistry lectures.</p>
-				<p>eSchool is a digital platform offering students, parents and educators a virtual approach of learning !!!</p>
-				<p>Assign classes to teachers</p>
-				<p>Add students and employee</p>
-				<p>Check and update fee</p>
-				<p>Remove students</p>
-				   
-			
-			</article>								
+				<p>You can view your student's grade, attendence and tuition invoices</p>
+			</article>	
+			<iframe width="420" height="345" src="https://www.youtube.be/embed//kIPUF5xgtjk">
+			</iframe>	
+								
 		</main>
 		
 		<nav id="left" class="column">
 			<h3>Administration</h3>
 			<ul>
-				<li><a href="#">View Student Grade </a></li>
-				<li><a href="#">View Tuition Bills</a></li>
-				<li><a href="#">View Attendance</a></li>
+				<li><a href="ParentViewGradesController">View Student Grade </a></li>
+				<li><a href="ParentViewBillsController">View Tuition Bills</a></li>
+				<li><a href="ParentViewAttendenceController">View Attendance</a></li>
 				
 			</ul>
 
@@ -199,11 +194,9 @@
 
 	</div>
 
-	<div id="footer-wrapper">
-		<footer id="footer"><p style="font-style: italic;font-size:11px;">Equal Opportunity Institution:eSchool is an affirmative action/equal opportunity employer.</p></footer>
-	</div>
+	
 
-	</div>
+	
     
 	<div id="footer-wrapper">
 		<footer id="footer"><p style="font-style: italic;font-size:11px;">Equal Opportunity Institution:eSchool is an affirmative action/equal opportunity employer.</p></footer>

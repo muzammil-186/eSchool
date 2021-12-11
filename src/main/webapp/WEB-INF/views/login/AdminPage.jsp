@@ -178,15 +178,13 @@
 			<h3>Administration</h3>
 			<ul>
 				<li><a href="#">Add Admission Criteria </a></li>
-				<li><a href="#">Add Grades</a></li>
 				<li><a href="#">Publish Results</a></li>
 				<li><a href="#">Publish Fees</a></li>
 				<li><a href="#">Create Academic Calendar</a></li>
-				<li><a href="#">Attendance</a></li>
 				<li><a href="#">Student Invoicing</a></li>
 				<li><a href="AddStudentServlet">Register Students</a></li>
-				<li><a href="#">Assign Teachers</a></li>
-			    <li><a href="#">Add Employees</a></li>
+				<li><a href="AddFacultyController">Assign Teachers</a></li>
+			    <li><a href="AddEmployeeController">Add Employees</a></li>
 			    <li><a href="#">Reports</a></li>
 			</ul>
 
@@ -208,9 +206,6 @@
 
 	</div>
     
-	<div id="footer-wrapper">
-		<footer id="footer"><p style="font-style: italic;font-size:11px;">Equal Opportunity Institution:eSchool is an affirmative action/equal opportunity employer.</p></footer>
-	</div>
 
 </body>
 

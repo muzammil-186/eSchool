@@ -29,7 +29,7 @@ public class AttendenceDao {
 				Class.forName("com.mysql.cj.jdbc.Driver");
 				
 				connection = 
-						DriverManager.getConnection("jdbc:mysql://localhost:3306/eschool?allowPublicKeyRetrieval=true&useSSL=false", "root", "admin");
+						DriverManager.getConnection("jdbc:mysql://localhost:3306/eschool?allowPublicKeyRetrieval=true&useSSL=false", "root", "abc123");
 			
 				Statement statement = connection.createStatement();
 				ResultSet rs = statement.executeQuery(GET_ATTEND_SQL);
@@ -69,7 +69,7 @@ public class AttendenceDao {
 				//Class.forName("com.mysql.cj.jdbc.Driver");
 				
 				connection = 
-						DriverManager.getConnection("jdbc:mysql://localhost:3306/eschool?allowPublicKeyRetrieval=true&useSSL=false", "root", "admin");
+						DriverManager.getConnection("jdbc:mysql://localhost:3306/eschool?allowPublicKeyRetrieval=true&useSSL=false", "root", "abc123");
 			
 							
 				PreparedStatement pstatement = connection.prepareStatement(REG_ATTEND_SQL);

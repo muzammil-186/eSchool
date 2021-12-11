@@ -52,11 +52,11 @@ public class LoginServlet extends HttpServlet {
 		// Get the current session , set username and password to it and later use it in the LogoutServlet
 		HttpSession sess= request.getSession();
 		sess.setAttribute("userName", userName);
-		sess.setAttribute("password", password);
+		//sess.setAttribute("password", password);commented out due to security concern
 		
 		RequestDispatcher dispatcher = null;
 		try {
-			user =  userDao.getUser(userName, password);
+			user =  userDao.getUser(userName);//, password);
 			String id=user.getId();
 			if(user != null ) {
 				String userRole = user.getRole();
@@ -70,7 +70,7 @@ public class LoginServlet extends HttpServlet {
 				}else if(userRole.equalsIgnoreCase("Faculty")) {
 					userDao.updateUserStatus(id, LOGGED_IN);
 					dispatcher = request.getRequestDispatcher("/WEB-INF/views/login/FacultyPage.jsp");					
-				}else if(userRole.equalsIgnoreCase("Employee")) {
+				}else if(userRole.equalsIgnoreCase("Employee") || userRole.equalsIgnoreCase("admin")) {
 					userDao.updateUserStatus(id, LOGGED_IN);
 					dispatcher = request.getRequestDispatcher("/WEB-INF/views/login/AdminPage.jsp");					
 				}else {

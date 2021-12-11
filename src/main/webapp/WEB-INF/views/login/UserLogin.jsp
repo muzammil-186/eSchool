@@ -184,6 +184,7 @@
        </form>
 
 	</div>
+	
     
 	<div id="footer-wrapper">
 		<footer id="footer"><p style="font-style: italic;font-size:11px;">Equal Opportunity Institution:eSchool is an affirmative action/equal opportunity employer.</p></footer>

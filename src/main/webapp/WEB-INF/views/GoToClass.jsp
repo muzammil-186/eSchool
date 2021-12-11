@@ -166,7 +166,7 @@
 				<h1>Class In Session</h1>
 				<p>Please start watching the recorded session</p>
 			</article>	
-			<iframe width="520" height="345" src="https://www.youtube.com/embed/E-gnJxK5tu0">
+			<iframe id="myiframe" width="520" height="345" src="https://www.youtube.com/embed/E-gnJxK5tu0">
 			
 			</iframe>							
 		</main>

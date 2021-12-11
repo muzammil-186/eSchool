@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 
 import com.edu.vu.model.Employee;
+import com.edu.vu.model.RegisteredStudent;
 import com.edu.vu.model.User;
 
 public class EmployeeDao {
@@ -34,7 +35,7 @@ public class EmployeeDao {
 			//Class.forName("com.mysql.cj.jdbc.Driver");
 			
 			connection = 
-					DriverManager.getConnection("jdbc:mysql://localhost:3306/eschool?allowPublicKeyRetrieval=true&useSSL=false", "root", "admin");
+					DriverManager.getConnection("jdbc:mysql://localhost:3306/eschool?allowPublicKeyRetrieval=true&useSSL=false", "root", "abc123");
 		
 			Statement statement = connection.createStatement();
 			rs = statement.executeQuery(GET_USER_SQL);
@@ -61,6 +62,46 @@ public class EmployeeDao {
 				}catch(Exception mo) {}
 		}
 		return employee;
+	}
+	
+	public boolean addEmployee(Employee employee)throws ClassNotFoundException{
+		boolean result =false;
+		String ADD_STUDENT_SQL = "INSERT INTO EMPLOYEE(EMPLOYEEID, FIRST_NAME, LAST_NAME, DOB, DESIGNATION, STATUS)  VALUES (?,?,?,?,?,?) ";  
+		                                                       
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		ResultSet rs =null;
+		Connection connection = null;
+		
+		try {
+			//Class.forName("com.mysql.cj.jdbc.Driver");
+			
+			connection = 
+					DriverManager.getConnection("jdbc:mysql://localhost:3306/eschool?allowPublicKeyRetrieval=true&useSSL=false", "root", "abc123");
+		
+						
+			PreparedStatement pstatement = connection.prepareStatement(ADD_STUDENT_SQL);
+			
+			pstatement.setString(1,employee.getEmployeeId());
+			pstatement.setString(2,employee.getFirstName());
+			pstatement.setString(3,employee.getLastName());
+			pstatement.setString(4,employee.getDob());
+			pstatement.setString(5,employee.getDesignation());
+			pstatement.setString(6,employee.getStatus());
+			
+			pstatement.execute();
+						
+				
+			result= true;
+						
+		}catch(Exception moae) {
+			
+			System.out.println("Encountered Exception:" + moae.getClass().getName()+ " With message:"+ moae.getMessage());
+		}finally {
+			try{
+				connection.close();
+			}catch(Exception mo) {}	
+		}
+		return result;
 	}
 
 }
